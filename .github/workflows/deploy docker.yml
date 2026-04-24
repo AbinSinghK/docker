@@ -24,8 +24,14 @@ jobs:
       - name: Push to DockerHub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/myapp:latest
       
-      - name: deploy to container
-        run: |
-          docker stop myapp || true
-          docker rm myapp || true
-          docker run -d -p 80:80 --name myapp ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+      - name: deploy to Server
+        uses: appleboy/ssh-action@v0.1.10
+        with: 
+          host: ${{ secrets.SERVER_IP }}
+          username: abinsingh2016
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+            docker stop myapp | true
+            docker rm myapp | true
+            docker run -d -p 80:80 myapp ${{ secrets.DOCKER_USERNAME }}/myapp:latest
