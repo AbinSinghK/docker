@@ -1,1 +1,45 @@
-<h1> AbinSinghK <h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Deployment Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background: #1e293b;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #38bdf8;
+        }
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Deployment Successful!</h1>
+        <p>Your Docker container is running.</p>
+        <p id="time"></p>
+    </div>
+
+    <script>
+        document.getElementById("time").innerText =
+            "Server Time: " + new Date().toLocaleString();
+    </script>
+</body>
+</html>
